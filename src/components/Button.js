@@ -34,11 +34,11 @@ function Button({
       "border-red-500 bg-red-500 text-white": danger,
       "rounded-full": rounded,
       "bg-white": outline,
-      "text-blue-400": outline && primary,
-      "text-gray-400": outline && secondary,
-      "text-green-400": outline && success,
-      "text-yellow-400": outline && warning,
-      "text-red-400": outline && danger,
+      "text-blue-500": outline && primary,
+      "text-gray-500": outline && secondary,
+      "text-green-500": outline && success,
+      "text-yellow-500": outline && warning,
+      "text-red-500": outline && danger,
     }
   );
 
