@@ -4,8 +4,8 @@ function App() {
   const items = [
     {
       id: "asd",
-      label: "Click here ?",
-      content: "More content dfgeregthgn sis here",
+      label: "Can i use GrapQL on a project ?",
+      content: "More content dfgeregthgn sis here for GRAPH QL",
     },
     {
       id: "aswerd",
