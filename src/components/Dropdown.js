@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-function Dropdown({ options }) {
+function Dropdown({ options, selection, onSelect }) {
   const [isOpen, setIsOpen] = useState(false);
   const handleOptionClick = (option) => {
     // close dropdown
     setIsOpen(false);
     // what option did user click on ??
-    console.log(option);
+    onSelect(option);
   };
 
   const handleClick = (event) => {
@@ -21,9 +21,14 @@ function Dropdown({ options }) {
     );
   });
 
+  let content = "Select...";
+  if (selection) {
+    content = selection.label;
+  }
+
   return (
     <div>
-      <div onClick={handleClick}>Select..</div>
+      <div onClick={handleClick}>{content}</div>
       {isOpen && <div>{renderedOptions}</div>}
     </div>
   );
