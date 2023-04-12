@@ -1,25 +1,13 @@
-import React from "react";
-import Accordion from "./components/Accordion";
+import Dropdown from "./components/Dropdown";
+
 function App() {
-  const items = [
-    {
-      id: "asd",
-      label: "Can i use GrapQL on a project ?",
-      content: "More content dfgeregthgn sis here for GRAPH QL",
-    },
-    {
-      id: "aswerd",
-      label: "Can i use React on a project ?",
-      content: "You can use react",
-    },
-    {
-      id: "aswewred",
-      label: "Can i use JS on a project ?",
-      content: "You can use JS",
-    },
+  const options = [
+    { label: "Red", value: "red" },
+    { label: "Green", value: "green" },
+    { label: "Blue", value: "blue" },
   ];
 
-  return <Accordion items={items} />;
+  return <Dropdown options={options} />;
 }
 
 export default App;
