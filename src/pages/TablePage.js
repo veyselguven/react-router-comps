@@ -21,8 +21,9 @@ function TablePage() {
       // sort: (fruit) => {
       //   return fruit.score((a, b) => a - b);
       // },
+      header: () => <th className="bg-red-500">Score</th>,
     },
-    { label: "Score Squared", render: (fruit) => fruit.score ** 2 },
+    // { label: "Score Squared", render: (fruit) => fruit.score ** 2 },
   ];
 
   const keyFn = (fruit) => {
