@@ -1,11 +1,24 @@
-import React from "react";
+/* eslint-disable no-unreachable */
+import React, { useState } from "react";
 import Table from "./Table";
 
 function SortableTable(props) {
+  const [sortOrder, setSortOrder] = useState(null);
+  const [sortBy, setSortBy] = useState(null);
   const { config } = props;
 
   const handleClick = (label) => {
-    console.log(label);
+    // console.log(label);
+    if (sortOrder === null) {
+      setSortOrder("asc");
+      setSortBy(label);
+    } else if (sortOrder === "asc") {
+      setSortOrder("desc");
+      setSortBy(label);
+    } else if (sortOrder === "desc") {
+      setSortBy(null);
+      setSortOrder(null);
+    }
   };
 
   const updatedConfing = config.map((column) => {
@@ -22,7 +35,12 @@ function SortableTable(props) {
     };
   });
 
-  return <Table {...props} config={updatedConfing} />;
+  return (
+    <div>
+      {sortOrder}-{sortBy}
+      <Table {...props} config={updatedConfing} />
+    </div>
+  );
 }
 
 export default SortableTable;
