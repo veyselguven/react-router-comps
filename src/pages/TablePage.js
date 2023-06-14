@@ -33,7 +33,11 @@ function TablePage() {
       //   </th>
       // ),
     },
-    { label: "Score Squared", render: (fruit) => fruit.score ** 2 },
+    {
+      label: "Score Squared",
+      render: (fruit) => fruit.score ** 2,
+      sortValue: (fruit) => fruit.score,
+    },
   ];
 
   const keyFn = (fruit) => {
