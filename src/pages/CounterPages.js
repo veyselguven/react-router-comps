@@ -3,7 +3,12 @@ import Panel from "../components/Panel";
 
 import React, { useState, useReducer } from "react";
 
-const reducer = (state, action) => {};
+const reducer = (state, action) => {
+  return {
+    ...state,
+    count: state.count + 1,
+  };
+};
 
 function CounterPages({ initialCount }) {
   // const [count, setCount] = useState(initialCount);
@@ -15,9 +20,11 @@ function CounterPages({ initialCount }) {
   console.log(state);
   const increment = () => {
     // setCount(count + 1);
+    dispatch();
   };
   const decrement = () => {
     // setCount(count - 1);
+    dispatch();
   };
   const handleChange = (e) => {
     const value = parseInt(e.target.value) || 0;
