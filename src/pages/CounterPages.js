@@ -1,13 +1,42 @@
 import Button from "../components/Button";
 import Panel from "../components/Panel";
 
-import React, { useState, useReducer } from "react";
+import React, { useReducer } from "react";
+
+const INCREMENT_COUNT = "increment";
+const SET_VALUE_TO_ADD = "change_value_to_add";
+const DECREMENT_COUNT = "decrement";
+const ADD_VALUE_T0_COUNT = "add_value_to_count";
 
 const reducer = (state, action) => {
-  return {
-    ...state,
-    count: state.count + 1,
-  };
+  // console.log("action=>", action);
+  // console.log("state=>", state);
+  switch (action.type) {
+    case INCREMENT_COUNT:
+      return {
+        ...state,
+        count: state.count + 1,
+      };
+    case DECREMENT_COUNT:
+      return {
+        ...state,
+        count: state.count - 1,
+      };
+    case SET_VALUE_TO_ADD:
+      return {
+        ...state,
+        valueToAdd: action.payload,
+      };
+    case ADD_VALUE_T0_COUNT:
+      return {
+        ...state,
+        count: state.count + state.valueToAdd,
+        valueToAdd: 0,
+      };
+    default:
+      return state;
+    // throw new Error("unexpected action type:" + action.type); // it is up to you if you would like to throw the error
+  }
 };
 
 function CounterPages({ initialCount }) {
@@ -20,23 +49,32 @@ function CounterPages({ initialCount }) {
   console.log(state);
   const increment = () => {
     // setCount(count + 1);
-    dispatch();
+    dispatch({
+      type: INCREMENT_COUNT,
+    });
   };
   const decrement = () => {
     // setCount(count - 1);
-    dispatch();
+    dispatch({ type: DECREMENT_COUNT });
   };
   const handleChange = (e) => {
     const value = parseInt(e.target.value) || 0;
     // console.log(typeof value);
     // console.log(value);
     // setValueToAdd(value);
+    dispatch({
+      type: SET_VALUE_TO_ADD,
+      payload: value,
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // setCount(count + valueToAdd);
     // setValueToAdd(0);
+    dispatch({
+      type: ADD_VALUE_T0_COUNT,
+    });
   };
   return (
     <Panel className="m-3">
